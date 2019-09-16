@@ -2,31 +2,63 @@ html {
   background-color: #eeeeee;
 }
 
-aside {
-  width: 700px;
+form, canvas {
+  padding: 20px;
 }
 
-figcaption {
-  margin-left: 2rem;
-  font-weight: bold;
-  font-size: 1rem;
+canvas {
+  height: 75vmin; 
+  width: 75vmin;
+  max-width: 50vw;
+  max-height: 50vw;
+}
+
+form {
+  height: 75vmin;
+  width: 75vmin;
+  max-width: 50vw;
+  max-height: 50vw;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Once the screen width becomes small enough to be a square, make the main content column based. */
+@media (max-aspect-ratio: 1/1) {
+  body {
+    flex-direction: column;
+  }
+
+  canvas {
+    max-width: 50vh;
+    max-height: 50vh;
+  }
+  
+  form {
+    max-width: 50vh;
+    max-height: 50vh;
+  }
 }
 
 body {
   font-family: monospace;
   justify-content: space-evenly;
-  height: 90vh;
+  height: 100vh;
+}
+
+#results {
+  height: 100%;
 }
 
 p, ul {
   border: 1px solid;
   padding: 0;
   list-style: none;
-  height: 15rem;
   overflow-y: scroll;
+  height: 100%;
 }
 
 p {
+  margin: 0;
   justify-content: center;
 }
 
@@ -35,14 +67,12 @@ label {
   display: block;
 }
 
-img {
-  width: 50%;
+.flex {
+  display: flex;
+  align-items: center;
 }
 
-canvas {
-  /*border: 1px solid;*/
-}
-
+/* Hidden class for a11y users */
 .hidden {
   /* Using the clip pattern to hide elements but
      still read them for a screen-reader */
@@ -56,10 +86,7 @@ canvas {
   position: absolute;
 }
 
-.flex {
-  display: flex;
-  align-items: center;
-}
+/* Loading CSS below */
 
 .loading {
   margin-left: .5rem;
@@ -72,7 +99,6 @@ canvas {
   animation: spin 2s linear infinite;
 }
 
-/* Safari */
 @-webkit-keyframes spin {
   0% { -webkit-transform: rotate(0deg); }
   100% { -webkit-transform: rotate(360deg); }

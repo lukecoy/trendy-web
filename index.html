@@ -15,43 +15,39 @@
   </head>
 
   <body class="flex">
-    <aside>
-      <form>
-        <fieldset>
-          <legend>Search for albums</legend>
-          <label class="hidden" for="search">Search for albums</label>
-          <div class="flex">
-            <input
-              id="search"
-              type="search"
-              placeholder="Nirvana - Nevermind"
-              autocomplete="off"
-              list="search-results"
-              size="30"
-              oninput="window.search(...arguments);"
-            />
-            <!--TODO make this accessible-->
-            <div id="loader" role="alert" aria-live="assertive">
-              <span></span>
-            </div>
+    <form>
+        <legend>Search for albums</legend>
+        <label class="hidden" for="search">Search for albums</label>
+        <div class="flex">
+          <input
+            id="search"
+            type="search"
+            placeholder="Nirvana - Nevermind"
+            autocomplete="off"
+            list="search-results"
+            size="30"
+            oninput="window.search(...arguments);"
+          />
+          <!--TODO make this accessible-->
+          <div id="loader" role="alert" aria-live="assertive">
+            <span></span>
           </div>
+        </div>
 
-          <div id="results" onclick="window.resultClick(...arguments);">
-            <p class="flex">~ No results yet ~</p>
-          </div>
+        <div id="results" onclick="window.resultClick(...arguments);">
+          <p class="flex">~ No results yet ~</p>
+        </div>
 
-          <div id="selected-result">
-          </div>
-        </fieldset>
-      </form>
-    </aside>
+        <div id="selected-result">
+        </div>
+    </form>
 
-    <canvas id="canvas" height="700" width="700"> </canvas>
+    <canvas id="canvas" height="600" width="600"></canvas>
 
     <script type="text/javascript" src="./debounce.js"></script>
     <script type="text/javascript" src="./parse-fetch-response.js"></script>
     <script type="text/javascript" src="./create-canvas-array.js"></script>
-    <script type="text/javascript">
+    <script type="text/javascript">      
       // Returns function that handles drawing the album on the canvas
       var drawCoverImage = window.createCanvasArray(document.querySelector('canvas'), 200, 600);
       // Cache some elements for reuse
